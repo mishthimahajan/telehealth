@@ -1,23 +1,29 @@
-import { OAuth2Client } from "google-auth-library";
+
+
 import jwt from "jsonwebtoken";
+import { OAuth2Client } from "google-auth-library";
 import User from "../models/User.js";
 
 const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
-export const googleAuth = async (req, res) => {
+export const googleLogin = async (req, res) => {
   try {
     const { token } = req.body;
 
-    // Verify token with Google
+    if (!token) {
+      return res.status(400).json({ message: "No Google token received" });
+    }
+
     const ticket = await client.verifyIdToken({
       idToken: token,
       audience: process.env.GOOGLE_CLIENT_ID,
     });
 
     const payload = ticket.getPayload();
-    const { name, email, picture } = payload;
+    console.log("GOOGLE PAYLOAD 👉", payload);
 
-    // Check if user exists
+    const { email, name, picture } = payload;
+
     let user = await User.findOne({ email });
 
     if (!user) {
@@ -29,7 +35,6 @@ export const googleAuth = async (req, res) => {
       });
     }
 
-    // Create JWT
     const jwtToken = jwt.sign(
       { id: user._id },
       process.env.JWT_SECRET,
@@ -37,17 +42,12 @@ export const googleAuth = async (req, res) => {
     );
 
     res.json({
-      message: "Google login successful",
       token: jwtToken,
-      user: {
-        id: user._id,
-        name: user.name,
-        email: user.email,
-      },
+      user,
     });
-
   } catch (error) {
-    console.error("Google Auth Error:", error);
+    console.error("Google auth error:", error);
     res.status(401).json({ message: "Google authentication failed" });
   }
 };
+

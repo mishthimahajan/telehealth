@@ -153,6 +153,14 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
+              <Link
+  to="/my-appointments"
+  className="hover:text-blue-700"
+>
+  My Appointments
+</Link>
+            </li>
+            <li>
               <Link to="/reports" className="hover:text-blue-700">
                 Reports
               </Link>

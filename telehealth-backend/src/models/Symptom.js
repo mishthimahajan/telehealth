@@ -5,16 +5,20 @@ const symptomSchema = new mongoose.Schema(
     user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
-      required: true,
+      required: false,
     },
     age: Number,
     gender: String,
     symptoms: [String],
-    result: String,
+    result: {
+      condition: String,
+      advice: String,
+    },
   },
   { timestamps: true }
 );
 
 export default mongoose.model("Symptom", symptomSchema);
+
 
 

@@ -4,11 +4,13 @@ import FeatureCard from "../components/FeatureCard";
 import Footer from "../components/Footer";
 // import image from "../assets/image.png";
 
+
 const Home = () => {
   return (
     <div className="font-sans">
       <Navbar />
       <Hero />
+      
 
       {/* FEATURES SECTION */}
       <section className="px-10 py-20 bg-blue-500">

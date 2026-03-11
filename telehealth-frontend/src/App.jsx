@@ -54,6 +54,7 @@ import BookAppointment from "./pages/BookAppointment";
 import Reports from "./pages/Reports";
 import VideoCall from "./pages/VideoCall";
 import Signup from "./pages/Signup";
+import MyAppointments from "./pages/MyAppointments";
 
 const App = () => {
   const location = useLocation();
@@ -74,6 +75,7 @@ const App = () => {
           <Route path="/reports" element={<Reports />} />
           <Route path="/video-call" element={<VideoCall />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/my-appointments" element={<MyAppointments />} />
 
         </Routes>
       </div>

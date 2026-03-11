@@ -1,15 +1,43 @@
-// #!/usr/bin/env node
+
+// import dotenv from "dotenv";
+// dotenv.config();
+
+// import app from "../app.js";
+// import http from "http";
+
+// const port = process.env.PORT || 3000;
+// app.set("port", port);
+
+// const server = http.createServer(app);
+// server.listen(port);
+
+// console.log(`🚀 Server running on http://localhost:${port}`);
+
 import dotenv from "dotenv";
 dotenv.config();
 
-import app from "../app.js";
 import http from "http";
+import app from "../app.js";
+import connectDB from "../config/db.js";
 
 const port = process.env.PORT || 3000;
 app.set("port", port);
 
-const server = http.createServer(app);
-server.listen(port);
+console.log("OPENAI KEY LOADED:", process.env.OPENAI_API_KEY?.slice(0, 10));
 
-console.log(`🚀 Server running on http://localhost:${port}`);
+const server = http.createServer(app);
+
+const startServer = async () => {
+  try {
+    await connectDB();
+    server.listen(port, () => {
+      console.log(`🚀 Server running on http://localhost:${port}`);
+    });
+  } catch (error) {
+    console.error("❌ Server failed to start", error);
+    process.exit(1);
+  }
+};
+
+startServer();
 

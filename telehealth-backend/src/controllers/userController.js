@@ -1,4 +1,4 @@
-import User from "../models/User.js";
+// import User from "../models/User.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
@@ -20,7 +20,7 @@ export const signup = async (req, res) => {
     const user = await User.create({
       fullName,
       email,
-      password: hashedPassword,
+      password: hashedPassword, 
     });
 
     res.status(201).json({

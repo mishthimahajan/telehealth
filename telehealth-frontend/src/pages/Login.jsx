@@ -1,17 +1,63 @@
 import { GoogleLogin } from "@react-oauth/google";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-
+import axios from "axios";
 
 const Login = () => {
   const navigate = useNavigate();
 
-  const handleGoogleSuccess = (credentialResponse) => {
-    console.log("Google Login Success:", credentialResponse);
+  
+// const handleGoogleSuccess = async (credentialResponse) => {
+//   console.log("GOOGLE CREDENTIAL:", credentialResponse);
 
-    
+//   try {
+//     const googleToken = credentialResponse.credential;
+
+//     console.log("GOOGLE TOKEN LENGTH:", googleToken?.length);
+
+//     const res = await axios.post(
+//       "http://localhost:3000/api/auth/google",
+//       // { token: googleToken }
+//       { token: googleToken },
+//       { withCredentials: true }
+//     );
+
+//     localStorage.setItem("token", res.data.token);
+//     localStorage.setItem("user", JSON.stringify(res.data.user));
+
+//     navigate("/");
+//   } catch (error) {
+//     console.error("Google login failed:", error);
+//   }
+// };
+
+
+const handleGoogleSuccess = async (credentialResponse) => {
+  console.log("GOOGLE RESPONSE:", credentialResponse);
+
+  try {
+    const googleToken = credentialResponse.credential;
+
+    if (!googleToken) {
+      console.error("No Google token received");
+      return;
+    }
+
+    const res = await axios.post(
+      "http://localhost:3000/api/auth/google",
+      { token: googleToken },
+      { withCredentials: true }
+    );
+
+    localStorage.setItem("token", res.data.token);
+    localStorage.setItem("user", JSON.stringify(res.data.user));
+
     navigate("/");
-  };
+  } catch (error) {
+    console.error("Google login failed:", error);
+  }
+}
+
 
   const handleGoogleError = () => {
     console.log("Google Login Failed");
