@@ -11,7 +11,8 @@ import indexRouter from "./routes/index.js";
 import symptomRoutes from "./routes/symptomChecker.js";
 import appointmentRoutes from "./routes/appointmentRoutes.js";
 import aiRoutes from "./routes/index.js";
-import reportRoutes from "./routes/reportRoutes.js"
+import reportRoutes from "./routes/reportRoutes.js";
+import paymentRoutes from "./routes/paymentRoutes.js"
 
 const app = express();
 
@@ -31,6 +32,7 @@ app.use("/api", indexRouter);
 app.use("/api/symptoms", symptomRoutes);
 app.use("/api/appointments", appointmentRoutes);
 app.use("/api/reports",reportRoutes);
+app.use("/api/payment",paymentRoutes);
 console.log("OPENAI KEY:", process.env.OPENAI_API_KEY);
 
 export default app;

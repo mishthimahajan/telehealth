@@ -137,7 +137,7 @@ const Reports = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center text-xl font-semibold">
+      <div className="w-screen h-screen flex items-center justify-center text-xl font-semibold">
         Loading AI Reports...
       </div>
     );

@@ -1386,6 +1386,7 @@ const handleBooking = async () => {
     alert("Booking failed");
   }
 };
+
   return (
     <div className="w-screen h-screen flex items-center justify-center bg-linear-to-br from-indigo-500 to-purple-600">
       <div className="bg-white p-8 rounded-2xl shadow-xl w-96">

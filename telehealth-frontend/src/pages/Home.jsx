@@ -12,7 +12,7 @@ const Home = () => {
       <Hero />
       
 
-      {/* FEATURES SECTION */}
+      
       <section className="px-10 py-20 bg-blue-500">
         <h2 className="text-4xl font-bold text-center text-blue-900 mb-12">
           Our Key Features

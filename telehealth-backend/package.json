@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "src/bin/www",
   "scripts": {
-    "start": "node src/bin/www",
-    "dev": "nodemon src/bin/www"
+    "dev": "nodemon src/server.js",
+    "start": "node src/server.js"
   },
   "type": "module",
   "keywords": [],
@@ -15,14 +15,16 @@
     "axios": "^1.13.6",
     "bcryptjs": "^3.0.3",
     "cors": "^2.8.6",
-    "dotenv": "^17.3.1",
+    "dotenv": "^17.4.1",
     "express": "^5.2.1",
     "google-auth-library": "^10.5.0",
     "groq-sdk": "^0.37.0",
     "jsonwebtoken": "^9.0.3",
     "mongoose": "^9.0.2",
     "nodemailer": "^8.0.1",
-    "openai": "^6.22.0"
+    "openai": "^6.22.0",
+    "razorpay": "^2.9.6",
+    "socket.io": "^4.8.3"
   },
   "devDependencies": {
     "nodemon": "^3.1.11"
