@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "src/bin/www",
   "scripts": {
-    "dev": "nodemon src/server.js",
-    "start": "node src/server.js"
+    "start": "node src/bin/www",
+    "dev": "nodemon src/server.js"
   },
   "type": "module",
   "keywords": [],
