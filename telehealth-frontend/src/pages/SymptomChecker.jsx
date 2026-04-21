@@ -683,7 +683,7 @@ const SymptomChecker = () => {
       setDoctor(null);
 
       const analysisRes = await axios.post(
-        "http://localhost:3000/api/analyze-symptoms",
+        "http://localhost:3000/api/advanced-ai/analyze",
         { age, gender, symptoms },
         {
           headers: {

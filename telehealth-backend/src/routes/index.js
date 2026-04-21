@@ -102,6 +102,8 @@ import { googleLogin } from "../controllers/googleAuthController.js";
 import { analyzeSymptomsAI, generateDoctorAI } from "../controllers/aiDoctorController.js";
 import authMiddleware from "../middleware/authMiddleware.js";
 import doctorRoutes from "./doctorRoutes.js";
+import advancedAiRoutes from "./advancedAiRoutes.js";
+import emergencyRoutes from "./emergencyRoutes.js";
 
 const router = express.Router();
 
@@ -116,5 +118,7 @@ router.post("/analyze-symptoms", authMiddleware, analyzeSymptomsAI);
 router.post("/generate-doctor", authMiddleware, generateDoctorAI);
 
 router.use("/doctors", doctorRoutes);
+router.use("/advanced-ai",advancedAiRoutes);
+router.use("/emergency",emergencyRoutes);
 
 export default router;
