@@ -307,7 +307,7 @@ const Signup = () => {
     setLoading(true);
 
     try {
-      const res = await axios.post("http://localhost:3000/api/signup", {
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/signup`, {
         fullName,
         email,
         password,
@@ -328,7 +328,7 @@ const Signup = () => {
     try {
       setLoading(true);
 
-      const res = await axios.post("http://localhost:3000/api/auth/google", {
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/auth/google`, {
         token: credentialResponse.credential,
       });
 

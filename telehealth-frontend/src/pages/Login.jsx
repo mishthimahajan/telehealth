@@ -179,7 +179,7 @@ const Login = () => {
       setLoading(true);
 
       const res = await axios.post(
-        "http://localhost:3000/api/auth/google",
+        `${import.meta.env.VITE_API_URL}/auth/google`,
         { token: googleToken },
         { withCredentials: true }
       );
@@ -214,7 +214,7 @@ const Login = () => {
       setLoading(true);
 
       const res = await axios.post(
-        "http://localhost:3000/api/login",
+        `${import.meta.env.VITE_API_URL}/login`,
         {
           email: formData.email,
           password: formData.password,

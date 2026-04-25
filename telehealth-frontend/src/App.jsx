@@ -147,7 +147,9 @@ import Reports from "./pages/Reports";
 import VideoCall from "./pages/VideoCall";
 import Signup from "./pages/Signup";
 import MyAppointments from "./pages/MyAppointments";
+import ExplanationCard from "./components/ExplanationCard";
 import EmergencyButton from "./components/EmergencyButton";
+import VoiceInputButton from "./components/VoiceInputButton";
 
 const App = () => {
   const location = useLocation();
